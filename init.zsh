@@ -50,6 +50,12 @@ else
   fi
 fi
 
+# Set minimum height when --height is given as a percentage
+zstyle -s ':prezto:module:fzf' min-height FZF_MIN_HEIGHT
+if [ ! -z "$FZF_MIN_HEIGHT" ]; then
+  export FZF_DEFAULT_OPTS="${FZF_DEFAULT_OPTS} --min-height ${FZF_MIN_HEIGHT}"
+fi
+
 # Set colors defined by user
 source "${0:h}/colors.zsh"
 zstyle -s ':prezto:module:fzf' color-scheme FZF_COLOR
